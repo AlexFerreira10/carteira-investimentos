@@ -25,6 +25,7 @@ st.subheader("Ações em Análise")
 col1, col2 = st.columns(2)
 with col1:
     st.write("- **PETR4.SA (Petrobras)**")
+with col2:
     st.write("- **WEGE3.SA (WEG)**")
 
 st.subheader("Análises Esperadas")

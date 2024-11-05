@@ -72,12 +72,14 @@ fig = px.imshow(correlation_matrix, text_auto=True, aspect="auto",
                 color_continuous_scale="RdBu", title="Matriz de Correlação entre Ações")
 st.plotly_chart(fig, use_container_width=True)  
 
-# Seção de Conceitos Matemáticos e Financeiros
 st.title("Conceitos Matemáticos e Financeiros")
+
 st.write("""
 ## 1. Preço de Fechamento
 O preço de fechamento é o último preço ao qual uma ação foi negociada durante um período de negociação.
+""")
 
+st.write("""
 ## 2. Volume Diário
 Refere-se à quantidade total de ações que foram compradas e vendidas em um dia.
 """)
@@ -87,7 +89,10 @@ st.write("""
 A média móvel suaviza as flutuações de dados e é calculada como:
 """)
 st.latex(r"""
-\text{Média Móvel 20 dias} = \frac{\sum_{i=0}^{19} \text{Preço de Fechamento}_i}{20}
+\text{Média Móvel 20 dias} = \frac{\sum_{i=0}^{19} \text{Preço de Fechamento}_{t-i}}{20}
+""")
+st.write("""
+onde o índice \( t-i \) representa o preço de fechamento nos dias anteriores, e a média móvel de 20 dias utiliza os últimos 20 preços de fechamento.
 """)
 
 st.write("""
@@ -95,14 +100,36 @@ st.write("""
 A volatilidade é uma medida da dispersão dos retornos de uma ação, calculada como o desvio padrão dos retornos diários:
 """)
 st.latex(r"""
-\text{Desvio Padrão} = \sqrt{\frac{\sum_{i=1}^{N} (R_i - \bar{R})^2}{N}}
+\sigma = \sqrt{\frac{\sum_{i=1}^{N} (R_i - \bar{R})^2}{N}}
+""")
+st.write("""
+onde \( R_i \) representa o retorno diário, \( \bar{R} \) é o retorno médio diário, e \( N \) é o número de dias considerados.
 """)
 
 st.write("""
 ## 5. Correlação
-A correlação mede a relação entre os retornos de diferentes ações e varia de -1 a 1.
+A correlação mede a relação entre os retornos de diferentes ações e varia de -1 a 1. A fórmula da correlação entre duas ações \(X\) e \(Y\) é:
+""")
+st.latex(r"""
+\text{Correlação}(X, Y) = \frac{\text{Cov}(X, Y)}{\sigma_X \sigma_Y}
+""")
+st.write("""
+onde \( \text{Cov}(X, Y) \) é a covariância entre os retornos de \(X\) e \(Y\), e \( \sigma_X \) e \( \sigma_Y \) são os desvios padrão dos retornos de \(X\) e \(Y\).
+""")
 
-## 6. Gráficos e Visualizações
+st.write("""
+## 6. Retorno Esperado
+O retorno esperado é a média dos retornos diários de um ativo ao longo de um período. Ele é usado para avaliar o desempenho médio de uma ação e é calculado como:
+""")
+st.latex(r"""
+\bar{R} = \frac{\sum_{i=1}^{N} R_i}{N}
+""")
+st.write("""
+onde \( R_i \) representa o retorno diário e \( N \) é o número de dias considerados.
+""")
+
+st.write("""
+## 7. Gráficos e Visualizações
 - **Gráficos de Preço**: Mostram a evolução dos preços de fechamento.
 - **Gráficos de Volume**: Mostram a quantidade de ações negociadas.
 - **Gráficos de Volatilidade**: Mostram a variação da volatilidade ao longo do tempo.
