@@ -17,17 +17,19 @@ st.divider()
 
 tickers = ["PETR4.SA", "WEGE3.SA"]  
 # Cria um dicionário com dados históricos das ações dos últimos 6 meses para cada ticker
+# Cada Ticker = Chave e os Dataframes de Cada Tiker são os valores
 data = {ticker: yf.Ticker(ticker).history(period="6mo") for ticker in tickers}
 
-# Limpeza e Tratamento dos Dados
+# Adicionando novas colunas em nossos dataframes
 for ticker, df in data.items():
     # Remove linhas com valores ausentes (NaN)
     df.dropna(inplace=True)
-    # Calcula o retorno diário como a variação percentual do preço de fechamento
+    #.pct_change() => calcula a diferença percentual entre o preço de fechamento de um dia e o preço de fechamento do dia anterior. 
     df['Daily Return'] = df['Close'].pct_change()
     # Calcula a média móvel de 20 dias no preço de fechamento
     df['20 Day MA'] = df['Close'].rolling(window=20).mean()
     # Calcula a volatilidade de 30 dias usando o desvio padrão dos retornos diários
+    # std() => desvio padrão
     df['30 Day Volatility'] = df['Daily Return'].rolling(window=30).std()
 
 # Análise de Correlação
@@ -49,7 +51,7 @@ for ticker in tickers:
     fig.add_trace(go.Scatter(x=data[ticker].index, y=data[ticker]['20 Day MA'], mode='lines', name="Média Móvel 20 dias", line=dict(color="orange", dash="dash")))
     # Configura o layout do gráfico
     fig.update_layout(title=f"Preço de Fechamento e Média Móvel - {ticker}", xaxis_title="Data", yaxis_title="Preço (R$)")
-    st.plotly_chart(fig)  # Exibe o gráfico no Streamlit
+    st.plotly_chart(fig)  
 
     # Gráfico de Volume
     st.write("### Volume Negociado")
@@ -72,7 +74,11 @@ fig = px.imshow(correlation_matrix, text_auto=True, aspect="auto",
                 color_continuous_scale="RdBu", title="Matriz de Correlação entre Ações")
 st.plotly_chart(fig, use_container_width=True)  
 
+
+
 st.title("Conceitos Matemáticos e Financeiros")
+
+st.write("obs: Estou com problemas com a conversão dos simbolos em letras")
 
 st.write("""
 ## 1. Preço de Fechamento
