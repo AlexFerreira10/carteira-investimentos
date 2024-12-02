@@ -113,18 +113,7 @@ onde \( R_i \) representa o retorno diário, \( \bar{R} \) é o retorno médio d
 """)
 
 st.write("""
-## 5. Correlação
-A correlação mede a relação entre os retornos de diferentes ações e varia de -1 a 1. A fórmula da correlação entre duas ações \(X\) e \(Y\) é:
-""")
-st.latex(r"""
-\text{Correlação}(X, Y) = \frac{\text{Cov}(X, Y)}{\sigma_X \sigma_Y}
-""")
-st.write("""
-onde \( \text{Cov}(X, Y) \) é a covariância entre os retornos de \(X\) e \(Y\), e \( \sigma_X \) e \( \sigma_Y \) são os desvios padrão dos retornos de \(X\) e \(Y\).
-""")
-
-st.write("""
-## 6. Retorno Esperado
+## 5. Retorno Esperado
 O retorno esperado é a média dos retornos diários de um ativo ao longo de um período. Ele é usado para avaliar o desempenho médio de uma ação e é calculado como:
 """)
 st.latex(r"""
@@ -135,7 +124,7 @@ onde \( R_i \) representa o retorno diário e \( N \) é o número de dias consi
 """)
 
 st.write("""
-## 7. Gráficos e Visualizações
+## 6. Gráficos e Visualizações
 - **Gráficos de Preço**: Mostram a evolução dos preços de fechamento.
 - **Gráficos de Volume**: Mostram a quantidade de ações negociadas.
 - **Gráficos de Volatilidade**: Mostram a variação da volatilidade ao longo do tempo.

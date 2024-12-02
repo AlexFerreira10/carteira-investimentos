@@ -3,14 +3,13 @@ import streamlit as st
 # Configuração da página de Insights e Feedback
 st.set_page_config(page_title="Insights e Feedback", layout="wide")
 
-# Título da Página
+
 st.title("Insights e Feedback para o Cliente")
 st.write("""
 Nesta seção, apresentamos os principais insights e recomendações para ajudar João a tomar uma decisão mais informada sobre suas opções de investimento.
 """)
 st.divider()
 
-# Introdução aos Insights
 st.header("Insights Gerais sobre as Ações")
 st.write("""
 **Análise Geral:**  
@@ -20,7 +19,6 @@ Com base nos dados dos últimos 6 meses, foram observadas as seguintes caracter�
 """)
 st.divider()
 
-# Insights Específicos por Ação
 st.subheader("Análise Específica para Cada Ação")
 
 # Insights para PETR4.SA
@@ -41,7 +39,6 @@ st.write("""
 """)
 st.divider()
 
-# Feedback e Recomendações para o Cliente
 st.header("Feedback e Recomendações")
 st.write("""
 Com base nas análises, recomendamos o seguinte para João:
